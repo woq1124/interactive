@@ -1,14 +1,16 @@
 import React from 'react';
-import logo from '../assets/logo.svg';
-import './App.css';
+import {
+  Button, createTheme, CssBaseline, ThemeProvider,
+} from '@mui/material';
+
+const theme = createTheme();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Button>This Is Button</Button>
+    </ThemeProvider>
   );
 }
 

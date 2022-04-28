@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
+    'no-shadow': 0,
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -31,6 +32,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/prefer-default-export': 0,
   },
   settings: {
     'import/resolver': {
