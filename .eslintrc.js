@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.spec.*', '**/*.stories.*'] }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'no-unused-vars': 1,
     'no-shadow': 0,
