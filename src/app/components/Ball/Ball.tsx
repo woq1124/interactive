@@ -8,7 +8,7 @@ const 빙글빙글 = keyframes({
   to: { transform: 'rotateY(360deg)' },
 });
 
-function Ball(props: {}) {
+function Ball() {
   // prop destruction
   // lib hooks
   // state, ref, querystring hooks

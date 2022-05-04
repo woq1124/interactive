@@ -13,7 +13,7 @@ const ballProperties: Record<string, any> = {
   velocityY: 0,
 };
 
-function BounceBall(props: {}) {
+function BounceBall() {
   // prop destruction
   // lib hooks
   // state, ref, querystring hooks
@@ -58,14 +58,14 @@ function BounceBall(props: {}) {
       }
       ballProperties.velocityX *= 0.99;
       if (
-        (ballProperties.y < 0 && ballProperties.velocityY < 0) ||
-        (ballProperties.y > 470 && ballProperties.velocityY > 0)
+        (ballProperties.y < 0 && ballProperties.velocityY < 0)
+        || (ballProperties.y > 470 && ballProperties.velocityY > 0)
       ) {
         ballProperties.velocityY = -ballProperties.velocityY * 0.7;
       }
       if (
-        (ballProperties.x < 0 && ballProperties.velocityX < 0) ||
-        (ballProperties.x > 470 && ballProperties.velocityX > 0)
+        (ballProperties.x < 0 && ballProperties.velocityX < 0)
+        || (ballProperties.x > 470 && ballProperties.velocityX > 0)
       ) {
         ballProperties.velocityX = -ballProperties.velocityX * 0.7;
       }

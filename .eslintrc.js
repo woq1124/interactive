@@ -35,6 +35,8 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 0,
+    'max-len': [1, { code: 120 }],
+    'react/no-array-index-key': 0,
   },
   settings: {
     'import/resolver': {
