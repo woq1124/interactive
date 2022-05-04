@@ -3,6 +3,8 @@ import React, { useEffect, useRef } from 'react';
 const GRAVITY = 9.8;
 
 let isGrabbed = false;
+let clickedXPosition = 0;
+let clickedYPosition = 0;
 let xDiff = 0;
 let yDiff = 0;
 
@@ -25,32 +27,27 @@ function BounceBall() {
   // calculated values
   // effects
   useEffect(() => {
-    const ballDiv = ballRef.current;
     const containerDiv = containerRef.current;
 
-    const mouseDownListener = () => {
+    const mouseDownListener = (e: MouseEvent) => {
       isGrabbed = true;
+      clickedXPosition = e.offsetX;
+      clickedYPosition = e.offsetY;
     };
-    ballDiv?.addEventListener('mousedown', mouseDownListener);
+    containerDiv?.addEventListener('mousedown', mouseDownListener);
 
-    const mousemoveListener = (e: any) => {
+    const mouseupListener = (e: MouseEvent) => {
       if (!isGrabbed) {
         return;
       }
-      xDiff = e.offsetX - (ballProperties.x + 15);
-      yDiff = e.offsetY - (ballProperties.y + 15);
-    };
-    containerDiv?.addEventListener('mousemove', mousemoveListener);
-
-    const mouseupListener = () => {
-      if (!isGrabbed) {
-        return;
-      }
+      xDiff = e.offsetX - clickedXPosition;
+      yDiff = e.offsetY - clickedYPosition;
       ballProperties.velocityX -= xDiff;
       ballProperties.velocityY -= yDiff;
       isGrabbed = false;
     };
-    document.addEventListener('mouseup', mouseupListener);
+
+    containerDiv?.addEventListener('mouseup', mouseupListener);
     const interval = setInterval(() => {
       ballProperties.velocityY += GRAVITY / 20;
       if (Math.abs(ballProperties.velocityY) < 1 && ballProperties.y > 468) {
@@ -78,9 +75,8 @@ function BounceBall() {
     }, 20);
     return () => {
       clearInterval(interval);
-      document.removeEventListener('mouseup', mouseupListener);
-      ballDiv?.removeEventListener('mousedown', mouseDownListener);
-      containerDiv?.removeEventListener('mousemove', mousemoveListener);
+      containerDiv?.removeEventListener('mousedown', mouseDownListener);
+      containerDiv?.removeEventListener('mouseup', mouseupListener);
     };
   }, []);
 
