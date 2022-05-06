@@ -42,8 +42,8 @@ function BounceBall() {
       }
       xDiff = e.offsetX - clickedXPosition;
       yDiff = e.offsetY - clickedYPosition;
-      ballProperties.velocityX -= xDiff;
-      ballProperties.velocityY -= yDiff;
+      ballProperties.velocityX -= xDiff / 3;
+      ballProperties.velocityY -= yDiff / 3;
       isGrabbed = false;
     };
 
